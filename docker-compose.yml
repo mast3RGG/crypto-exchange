@@ -1,7 +1,7 @@
 services:
   database:
     image: mariadb:11
-    container_name: exchnage-mariadb
+    container_name: exchange-mariadb
     restart: always
     ports:
       - "3306:3306"
@@ -9,8 +9,8 @@ services:
     environment:
       MYSQL_DATABASE: exchange-db
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-      MYSQL_USER : ${DB_USER_USERNAME}
-      MYSQL_PASSWORD : ${DB_USER_PASSWORD}
+      MYSQL_USER: ${DB_USER_USERNAME}
+      MYSQL_PASSWORD: ${DB_USER_PASSWORD}
 
 
     volumes:
