@@ -3,6 +3,7 @@ package com.exchange.core.models.entities;
 import com.exchange.core.models.enums.OrderSide;
 import com.exchange.core.models.enums.OrderStatus;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -35,12 +36,15 @@ public class Order {
     @Column(name = "side" , nullable = false)
     private OrderSide side;
 
+    @PositiveOrZero
     @Column(name = "price" , nullable = false , precision =  19, scale = 8)
     private BigDecimal price;
 
+    @PositiveOrZero
     @Column(name = "amount" , nullable = false , precision =  19, scale = 8)
     private BigDecimal amount;
 
+    @PositiveOrZero
     @Column(name = "filled" , nullable = false , precision =  19, scale = 8)
     private BigDecimal filled;
 

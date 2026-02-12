@@ -2,6 +2,8 @@ package com.exchange.core.models.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -33,9 +35,11 @@ public class User {
     @Column(name = "username" , unique = true, nullable = false)
     private String username;
 
+    @Size(min = 8)
     @Column (name = "password" , nullable = false)
     private String password;
 
+    @Email
     @Column(name = "email" , nullable = false , unique = true)
     private String email;
 
@@ -56,5 +60,8 @@ public class User {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @Version
+    private Long version;
 
 }

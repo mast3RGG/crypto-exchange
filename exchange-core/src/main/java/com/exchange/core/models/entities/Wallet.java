@@ -1,6 +1,7 @@
 package com.exchange.core.models.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -31,12 +32,17 @@ public class Wallet {
     @OneToMany(cascade = CascadeType.ALL , mappedBy = "wallet")
     private List<Transaction> transactions;
 
+    @PositiveOrZero
     @Column(name = "balance" , precision = 19 , scale = 8)
     private BigDecimal balance;
 
+    @PositiveOrZero
     @Column(name = "locked_money", precision = 19 , scale = 8)
     private BigDecimal lockedMoney;
 
+
+    @Version
+    private Long version;
 
 
 }
